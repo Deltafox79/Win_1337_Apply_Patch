@@ -172,6 +172,7 @@
             this.controlloBackup.TabIndex = 76;
             this.controlloBackup.Text = "Backup";
             this.controlloBackup.UseVisualStyleBackColor = true;
+            this.controlloBackup.CheckedChanged += new System.EventHandler(this.controlloBackup_CheckedChanged);
             // 
             // cfileoffsett
             // 
@@ -186,6 +187,7 @@
             this.cfileoffsett.TabIndex = 77;
             this.cfileoffsett.Text = "Fix Offset";
             this.cfileoffsett.UseVisualStyleBackColor = true;
+            this.cfileoffsett.CheckedChanged += new System.EventHandler(this.cfileoffsett_CheckedChanged);
             // 
             // Form1
             // 
@@ -209,7 +211,7 @@
             this.MinimumSize = new System.Drawing.Size(448, 122);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Win 1337 Apply Patch File v1.3...";
+            this.Text = "Win 1337 Apply Patch File v1.4...";
             this.Load += new System.EventHandler(this.DFoX_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

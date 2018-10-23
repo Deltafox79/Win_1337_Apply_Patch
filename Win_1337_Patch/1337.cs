@@ -116,14 +116,14 @@ namespace Win_1337_Patch
                 return;
             }
             string[] lines = File.ReadAllLines(f1337);
-            if (lines[0].Substring(0,1) != ">")
+            if (lines[0].Substring(0, 1) != ">")
             {
                 MessageBox.Show("File 1337 is not valid...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (lines[0].Substring(1).ToLower() != Path.GetFileName(exe).ToLower())
             {
-                MessageBox.Show("File 1337 is not valid for selected exe...\n\n(\"" + lines[0].Substring(1).ToLower() + "\" vs \"" + Path.GetFileName(exe).ToLower() + "\")", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("File 1337 is not valid for selected exe/dll...\n\n(\"" + lines[0].Substring(1).ToLower() + "\" but you have selected \"" + Path.GetFileName(exe).ToLower() + "\")", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             byte[] bexe = File.ReadAllBytes(exe);
@@ -185,6 +185,8 @@ namespace Win_1337_Patch
         {
             string urlexe = Properties.Settings.Default["urlexe"].ToString().Trim();
             string url1337 = Properties.Settings.Default["url1337"].ToString().Trim();
+            cfileoffsett.Checked = (bool)Properties.Settings.Default["fixoffset"];
+            controlloBackup.Checked = (bool)Properties.Settings.Default["backup"];
             if (urlexe != "")
             {
                 texe.Text = Ellipsis.Compact(urlexe, texe, EllipsisFormat.Path);
@@ -201,6 +203,18 @@ namespace Win_1337_Patch
             }
             else
                 t1337.Text = "Select .1337 File...";
+        }
+
+        private void cfileoffsett_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default["fixoffset"] = cfileoffsett.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void controlloBackup_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default["backup"] = controlloBackup.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

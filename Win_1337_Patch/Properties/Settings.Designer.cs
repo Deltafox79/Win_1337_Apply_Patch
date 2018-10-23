@@ -46,5 +46,29 @@ namespace Win_1337_Patch.Properties {
                 this["url1337"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool fixoffset {
+            get {
+                return ((bool)(this["fixoffset"]));
+            }
+            set {
+                this["fixoffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool backup {
+            get {
+                return ((bool)(this["backup"]));
+            }
+            set {
+                this["backup"] = value;
+            }
+        }
     }
 }
