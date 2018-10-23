@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -194,7 +196,7 @@ namespace Win_1337_Patch
                 exe = urlexe;
             }
             else
-                texe.Text = "Select Exe to Patch...";
+                texe.Text = "Select Exe/Dll to Patch...";
             if (url1337 != "")
             {
                 t1337.Text = Ellipsis.Compact(url1337, t1337, EllipsisFormat.Path);
@@ -215,6 +217,55 @@ namespace Win_1337_Patch
         {
             Properties.Settings.Default["backup"] = controlloBackup.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void linkdfox_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _apriUrl(@"https://github.com/Deltafox79/Win_1337_Apply_Patch");
+        }
+        private void _apriUrl(string url)
+        {
+            try
+            {
+                string browserPath = ottieniLaPathBrowser();
+                if (browserPath == string.Empty)
+                    browserPath = "iexplore";
+                Process process = new Process();
+                process.StartInfo = new ProcessStartInfo(browserPath);
+                process.StartInfo.Arguments = url;
+                process.Start();
+            }
+            catch
+            {
+                //Nothing
+            }
+        }
+        private static string ottieniLaPathBrowser()
+        {
+            string name = String.Empty;
+            RegistryKey regKey = null;
+            try
+            {
+                var regDefault = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.htm\\UserChoice", false);
+                var stringDefault = regDefault.GetValue("ProgId");
+
+                regKey = Registry.ClassesRoot.OpenSubKey(stringDefault + "\\shell\\open\\command", false);
+                name = regKey.GetValue(null).ToString().ToLower().Replace("" + (char)34, "");
+
+                if (!name.EndsWith("exe"))
+                    name = name.Substring(0, name.LastIndexOf(".exe") + 4);
+
+            }
+            catch
+            {
+                return String.Empty;
+            }
+            finally
+            {
+                if (regKey != null)
+                    regKey.Close();
+            }
+            return name;
         }
     }
 }

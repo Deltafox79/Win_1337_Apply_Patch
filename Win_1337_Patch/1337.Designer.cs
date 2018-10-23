@@ -48,6 +48,7 @@
             // 
             this.btnSelectExe.CausesValidation = false;
             this.btnSelectExe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSelectExe.ForeColor = System.Drawing.Color.DarkRed;
             this.btnSelectExe.Location = new System.Drawing.Point(397, 4);
             this.btnSelectExe.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelectExe.Name = "btnSelectExe";
@@ -62,7 +63,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label7.Location = new System.Drawing.Point(12, 35);
+            this.label7.Location = new System.Drawing.Point(2, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 17;
@@ -88,11 +89,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(12, 9);
+            this.label6.Location = new System.Drawing.Point(2, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.Size = new System.Drawing.Size(81, 13);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Exe File :";
+            this.label6.Text = "Exe/Dll File :";
             // 
             // texe
             // 
@@ -104,7 +105,7 @@
             this.texe.ReadOnly = true;
             this.texe.Size = new System.Drawing.Size(309, 20);
             this.texe.TabIndex = 14;
-            this.texe.Text = "Select Exe to Patch...";
+            this.texe.Text = "Select Exe/Dll to Patch...";
             this.texe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.texe.DragDrop += new System.Windows.Forms.DragEventHandler(this.texe_DragDrop);
             this.texe.DragEnter += new System.Windows.Forms.DragEventHandler(this.texe_DragEnter);
@@ -113,6 +114,7 @@
             // 
             this.btnSelect1337.CausesValidation = false;
             this.btnSelect1337.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSelect1337.ForeColor = System.Drawing.Color.DarkRed;
             this.btnSelect1337.Location = new System.Drawing.Point(397, 30);
             this.btnSelect1337.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelect1337.Name = "btnSelect1337";
@@ -134,6 +136,7 @@
             this.linkdfox.TabIndex = 73;
             this.linkdfox.TabStop = true;
             this.linkdfox.Text = "By DeltaFoX";
+            this.linkdfox.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkdfox_LinkClicked);
             // 
             // Patch
             // 
@@ -165,10 +168,11 @@
             this.controlloBackup.Checked = true;
             this.controlloBackup.CheckState = System.Windows.Forms.CheckState.Checked;
             this.controlloBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.controlloBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.controlloBackup.ForeColor = System.Drawing.Color.Teal;
-            this.controlloBackup.Location = new System.Drawing.Point(15, 61);
+            this.controlloBackup.Location = new System.Drawing.Point(3, 61);
             this.controlloBackup.Name = "controlloBackup";
-            this.controlloBackup.Size = new System.Drawing.Size(63, 17);
+            this.controlloBackup.Size = new System.Drawing.Size(69, 17);
             this.controlloBackup.TabIndex = 76;
             this.controlloBackup.Text = "Backup";
             this.controlloBackup.UseVisualStyleBackColor = true;
@@ -180,10 +184,11 @@
             this.cfileoffsett.Checked = true;
             this.cfileoffsett.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cfileoffsett.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cfileoffsett.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cfileoffsett.ForeColor = System.Drawing.Color.Teal;
-            this.cfileoffsett.Location = new System.Drawing.Point(80, 61);
+            this.cfileoffsett.Location = new System.Drawing.Point(74, 61);
             this.cfileoffsett.Name = "cfileoffsett";
-            this.cfileoffsett.Size = new System.Drawing.Size(70, 17);
+            this.cfileoffsett.Size = new System.Drawing.Size(80, 17);
             this.cfileoffsett.TabIndex = 77;
             this.cfileoffsett.Text = "Fix Offset";
             this.cfileoffsett.UseVisualStyleBackColor = true;
@@ -211,7 +216,7 @@
             this.MinimumSize = new System.Drawing.Size(448, 122);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Win 1337 Apply Patch File v1.4...";
+            this.Text = "Win 1337 Apply Patch File v1.5...";
             this.Load += new System.EventHandler(this.DFoX_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
