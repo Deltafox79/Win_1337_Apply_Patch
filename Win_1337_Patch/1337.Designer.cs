@@ -200,7 +200,7 @@
             this.MinimumSize = new System.Drawing.Size(448, 122);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Win 1337 Apply Patch File v1.6...";
+            this.Text = "Win 1337 Apply Patch File v1.7...";
             this.Load += new System.EventHandler(this.DFoX_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

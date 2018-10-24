@@ -58,12 +58,18 @@ namespace Win_1337_Patch
                         Properties.Settings.Default["urlexe"] = exe;
                         Properties.Settings.Default.Save();
                     }
+                    else
+                    {
+                        t1337.Text = "Select .1337 File...";
+                        f1337 = String.Empty;
+                    }
                 }
             }
             catch
             {
-                return;
+                //Nothing;
             }
+            return;
         }
 
         private void t1337_DragEnter(object sender, DragEventArgs e)
@@ -102,11 +108,17 @@ namespace Win_1337_Patch
                     Properties.Settings.Default["urlexe"] = exe;
                     Properties.Settings.Default.Save();
                 }
+                else
+                {
+                    t1337.Text = "Select .1337 File...";
+                    f1337 = String.Empty;
+                }
             }
             catch
             {
-                return;
+                //Nothing;
             }
+            return;
         }
         private void Esci_Click(object sender, EventArgs e)
         {
