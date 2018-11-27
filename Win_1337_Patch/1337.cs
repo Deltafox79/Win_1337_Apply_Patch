@@ -17,6 +17,10 @@ namespace Win_1337_Patch
         public Form1()
         {
             InitializeComponent();
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            string ver = "v" + version.Major + "." + version.Minor;
+            this.Text = "Win 1337 Apply Patch File " + ver;
+            linkdfox.Text = ver + " By DeltaFoX";
         }
         private void set()
         {
@@ -35,6 +39,7 @@ namespace Win_1337_Patch
             apriDialogoFile1.Filter = "File " + ext + "|" + nf;
             apriDialogoFile1.FilterIndex = 0;
             apriDialogoFile1.Title = "Select the file \"" + nf + "\" File...";
+
             if (apriDialogoFile1.ShowDialog() == DialogResult.OK)
             {
                 exe = apriDialogoFile1.FileName;
@@ -45,8 +50,8 @@ namespace Win_1337_Patch
             }
             else
             {
-                t1337.Text = "Select .1337 File...";
-                texe.Text = "Name of Exe/Dll to Patch...";
+                t1337.Text = "Select a .1337 File...";
+                texe.Text = "Select the Exe/Dll to Patch...";
                 f1337 = String.Empty;
                 exe = String.Empty;
             }
@@ -72,7 +77,7 @@ namespace Win_1337_Patch
                 OpenFileDialog apriDialogoFile1 = new OpenFileDialog();
                 apriDialogoFile1.Filter = "File 1337|*.*";
                 apriDialogoFile1.FilterIndex = 0;
-                apriDialogoFile1.Title = "Select the file 1337 File...";
+                apriDialogoFile1.Title = "Select the .1337 File...";
                 apriDialogoFile1.InitialDirectory = url1337 != "" ? url1337 : Directory.GetCurrentDirectory() + "\\";
                 apriDialogoFile1.RestoreDirectory = true;
                 if (apriDialogoFile1.ShowDialog() == DialogResult.OK)
@@ -97,34 +102,26 @@ namespace Win_1337_Patch
         {
             if (!s.StartsWith(">"))
             {
-                MessageBox.Show("File 1337 is not valid...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The .1337 File is not valid...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
-        }
-        private void Esci_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void Patch_Click(object sender, EventArgs e)
         {
             if (f1337 == String.Empty)
             {
-                MessageBox.Show("Select a 1337 File...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a .1337 File...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
                 DFoX_Patch();
             }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show("Sorry !!!\nYou Run the Program as Administrator...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch
             {
-                MessageBox.Show("Problems on Patch...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem occured when Patching...", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -140,7 +137,7 @@ namespace Win_1337_Patch
                 return;
             if (lines[0].Substring(1).ToLower().Trim() != Path.GetFileName(exe).ToLower().Trim())
             {
-                MessageBox.Show("File 1337 is not valid for selected exe/dll...\n\n(\"" + lines[0].Substring(1).ToLower() + "\" but you have selected \"" + Path.GetFileName(exe).ToLower() + "\")", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The .1337 File is not valid for selected exe/dll...\n\n(\"" + lines[0].Substring(1).ToLower() + "\" but you have selected \"" + Path.GetFileName(exe).ToLower() + "\")", "Info...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             byte[] bexe = File.ReadAllBytes(exe);
@@ -211,7 +208,7 @@ namespace Win_1337_Patch
                 exe = urlexe;
             }
             else
-                texe.Text = "Name of Exe/Dll to Patch...";
+                texe.Text = "Select the Exe/Dll to Patch...";
             if (url1337 != "" && urlexe != "")
             {
                 t1337.Text = Ellipsis.Compact(url1337, t1337, EllipsisFormat.Path);
@@ -219,7 +216,7 @@ namespace Win_1337_Patch
                 f1337 = url1337;
             }
             else
-                t1337.Text = "Select .1337 File...";
+                t1337.Text = "Select a .1337 File...";
         }
 
         private void cfileoffsett_CheckedChanged(object sender, EventArgs e)

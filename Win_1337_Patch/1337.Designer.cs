@@ -37,7 +37,6 @@
             this.btnSelect1337 = new System.Windows.Forms.Button();
             this.linkdfox = new System.Windows.Forms.LinkLabel();
             this.Patch = new System.Windows.Forms.Button();
-            this.cfixoff = new System.Windows.Forms.Button();
             this.controlloBackup = new System.Windows.Forms.CheckBox();
             this.cfileoffsett = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -65,7 +64,7 @@
             this.t1337.Size = new System.Drawing.Size(309, 20);
             this.t1337.TabIndex = 16;
             this.t1337.TabStop = false;
-            this.t1337.Text = "Select .1337 File...";
+            this.t1337.Text = "Select 1337 File...";
             this.t1337.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.t1337.DragDrop += new System.Windows.Forms.DragEventHandler(this.t1337_DragDrop);
             this.t1337.DragEnter += new System.Windows.Forms.DragEventHandler(this.t1337_DragEnter);
@@ -115,7 +114,7 @@
             this.linkdfox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkdfox.ForeColor = System.Drawing.Color.BlueViolet;
             this.linkdfox.LinkColor = System.Drawing.Color.Indigo;
-            this.linkdfox.Location = new System.Drawing.Point(255, 62);
+            this.linkdfox.Location = new System.Drawing.Point(226, 62);
             this.linkdfox.Name = "linkdfox";
             this.linkdfox.Size = new System.Drawing.Size(77, 13);
             this.linkdfox.TabIndex = 73;
@@ -134,18 +133,6 @@
             this.Patch.Text = "Patch";
             this.Patch.UseVisualStyleBackColor = true;
             this.Patch.Click += new System.EventHandler(this.Patch_Click);
-            // 
-            // cfixoff
-            // 
-            this.cfixoff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cfixoff.ForeColor = System.Drawing.Color.Crimson;
-            this.cfixoff.Location = new System.Drawing.Point(156, 57);
-            this.cfixoff.Name = "cfixoff";
-            this.cfixoff.Size = new System.Drawing.Size(88, 23);
-            this.cfixoff.TabIndex = 75;
-            this.cfixoff.Text = "Exit";
-            this.cfixoff.UseVisualStyleBackColor = true;
-            this.cfixoff.Click += new System.EventHandler(this.Esci_Click);
             // 
             // controlloBackup
             // 
@@ -186,7 +173,6 @@
             this.ClientSize = new System.Drawing.Size(432, 83);
             this.Controls.Add(this.cfileoffsett);
             this.Controls.Add(this.controlloBackup);
-            this.Controls.Add(this.cfixoff);
             this.Controls.Add(this.Patch);
             this.Controls.Add(this.linkdfox);
             this.Controls.Add(this.btnSelect1337);
@@ -200,7 +186,7 @@
             this.MinimumSize = new System.Drawing.Size(448, 122);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Win 1337 Apply Patch File v1.8...";
+            this.Text = "Win 1337 Apply Patch File";
             this.Load += new System.EventHandler(this.DFoX_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -215,7 +201,6 @@
         private System.Windows.Forms.Button btnSelect1337;
         private System.Windows.Forms.LinkLabel linkdfox;
         private System.Windows.Forms.Button Patch;
-        private System.Windows.Forms.Button cfixoff;
         private System.Windows.Forms.CheckBox controlloBackup;
         private System.Windows.Forms.CheckBox cfileoffsett;
         private System.Windows.Forms.ToolTip toolTip1;
