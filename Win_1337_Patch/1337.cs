@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace Win_1337_Patch
 {
@@ -283,6 +285,64 @@ namespace Win_1337_Patch
         private void t1337_DoubleClick(object sender, EventArgs e)
         {
             btnSelect1337.PerformClick();
+        }
+
+        private void cchangeOwnership_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cchangeOwnership.Checked)
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(exe))
+                    {
+                        UnlockDLL(exe);
+                        MessageBox.Show($"Ownership of {exe} changed to Administrators and full control granted.", "Ownership Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a DLL/EXE file first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cchangeOwnership.Checked = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cchangeOwnership.Checked = false;
+                }
+            }
+        }
+
+        private void UnlockDLL(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("The specified file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                FileSecurity fileSecurity = File.GetAccessControl(filePath);
+                IdentityReference administrators = new NTAccount("Administrators");
+
+                fileSecurity.SetOwner(administrators);
+
+                File.SetAccessControl(filePath, fileSecurity);
+
+                FileSystemAccessRule accessRule = new FileSystemAccessRule(administrators,
+                    FileSystemRights.FullControl,
+                    AccessControlType.Allow);
+
+                fileSecurity.AddAccessRule(accessRule);
+
+                File.SetAccessControl(filePath, fileSecurity);
+
+                MessageBox.Show($"Owner changed to 'Administrators' and full control permissions granted to 'Administrators' for file: {filePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while changing ownership: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
