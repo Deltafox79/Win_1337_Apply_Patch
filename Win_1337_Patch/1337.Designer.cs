@@ -40,6 +40,7 @@
             this.controlloBackup = new System.Windows.Forms.CheckBox();
             this.cfileoffsett = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cchangeOwnership = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label7
@@ -61,7 +62,7 @@
             this.t1337.Location = new System.Drawing.Point(90, 5);
             this.t1337.Name = "t1337";
             this.t1337.ReadOnly = true;
-            this.t1337.Size = new System.Drawing.Size(309, 20);
+            this.t1337.Size = new System.Drawing.Size(343, 20);
             this.t1337.TabIndex = 16;
             this.t1337.TabStop = false;
             this.t1337.Text = "Select 1337 File...";
@@ -88,7 +89,7 @@
             this.texe.Location = new System.Drawing.Point(90, 31);
             this.texe.Name = "texe";
             this.texe.ReadOnly = true;
-            this.texe.Size = new System.Drawing.Size(336, 20);
+            this.texe.Size = new System.Drawing.Size(370, 20);
             this.texe.TabIndex = 14;
             this.texe.TabStop = false;
             this.texe.Text = "Name of Exe/Dll to Patch...";
@@ -99,7 +100,7 @@
             this.btnSelect1337.CausesValidation = false;
             this.btnSelect1337.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnSelect1337.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSelect1337.Location = new System.Drawing.Point(402, 3);
+            this.btnSelect1337.Location = new System.Drawing.Point(436, 2);
             this.btnSelect1337.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelect1337.Name = "btnSelect1337";
             this.btnSelect1337.Size = new System.Drawing.Size(24, 23);
@@ -114,7 +115,7 @@
             this.linkdfox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkdfox.ForeColor = System.Drawing.Color.BlueViolet;
             this.linkdfox.LinkColor = System.Drawing.Color.Indigo;
-            this.linkdfox.Location = new System.Drawing.Point(226, 62);
+            this.linkdfox.Location = new System.Drawing.Point(256, 61);
             this.linkdfox.Name = "linkdfox";
             this.linkdfox.Size = new System.Drawing.Size(77, 13);
             this.linkdfox.TabIndex = 73;
@@ -126,7 +127,7 @@
             // 
             this.Patch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Patch.ForeColor = System.Drawing.Color.DarkBlue;
-            this.Patch.Location = new System.Drawing.Point(338, 57);
+            this.Patch.Location = new System.Drawing.Point(372, 56);
             this.Patch.Name = "Patch";
             this.Patch.Size = new System.Drawing.Size(88, 23);
             this.Patch.TabIndex = 74;
@@ -142,7 +143,7 @@
             this.controlloBackup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.controlloBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.controlloBackup.ForeColor = System.Drawing.Color.Teal;
-            this.controlloBackup.Location = new System.Drawing.Point(3, 61);
+            this.controlloBackup.Location = new System.Drawing.Point(8, 60);
             this.controlloBackup.Name = "controlloBackup";
             this.controlloBackup.Size = new System.Drawing.Size(69, 17);
             this.controlloBackup.TabIndex = 76;
@@ -158,7 +159,7 @@
             this.cfileoffsett.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cfileoffsett.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cfileoffsett.ForeColor = System.Drawing.Color.Teal;
-            this.cfileoffsett.Location = new System.Drawing.Point(74, 61);
+            this.cfileoffsett.Location = new System.Drawing.Point(79, 60);
             this.cfileoffsett.Name = "cfileoffsett";
             this.cfileoffsett.Size = new System.Drawing.Size(80, 17);
             this.cfileoffsett.TabIndex = 77;
@@ -166,11 +167,27 @@
             this.cfileoffsett.UseVisualStyleBackColor = true;
             this.cfileoffsett.CheckedChanged += new System.EventHandler(this.cfileoffsett_CheckedChanged);
             // 
+            // cchangeOwnership
+            // 
+            this.cchangeOwnership.AutoSize = true;
+            this.cchangeOwnership.Checked = true;
+            this.cchangeOwnership.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cchangeOwnership.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cchangeOwnership.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cchangeOwnership.ForeColor = System.Drawing.Color.Teal;
+            this.cchangeOwnership.Location = new System.Drawing.Point(165, 60);
+            this.cchangeOwnership.Name = "cchangeOwnership";
+            this.cchangeOwnership.Size = new System.Drawing.Size(93, 17);
+            this.cchangeOwnership.TabIndex = 78;
+            this.cchangeOwnership.Text = "Unlock DLL";
+            this.cchangeOwnership.UseVisualStyleBackColor = true;
+            this.cchangeOwnership.CheckedChanged += new System.EventHandler(this.cchangeOwnership_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 83);
+            this.ClientSize = new System.Drawing.Size(472, 83);
             this.Controls.Add(this.cfileoffsett);
             this.Controls.Add(this.controlloBackup);
             this.Controls.Add(this.Patch);
@@ -180,10 +197,11 @@
             this.Controls.Add(this.t1337);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.texe);
+            this.Controls.Add(this.cchangeOwnership);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(448, 122);
-            this.MinimumSize = new System.Drawing.Size(448, 122);
+            this.MaximumSize = new System.Drawing.Size(488, 122);
+            this.MinimumSize = new System.Drawing.Size(488, 122);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Win 1337 Apply Patch File";
@@ -204,6 +222,7 @@
         private System.Windows.Forms.CheckBox controlloBackup;
         private System.Windows.Forms.CheckBox cfileoffsett;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox cchangeOwnership;
     }
 }
 
