@@ -28,7 +28,7 @@ namespace Win_1337_Patch
             IMAGE_DOS_HEADER DHD = new IMAGE_DOS_HEADER();
             IMAGE_NT_HEADERS NHD = new IMAGE_NT_HEADERS();
 
-            int iPointer = 0;
+            long iPointer = 0; 
             uint uOriginal = 0;
             uint uRecalculated = 0;
             uint uRet = 0;
@@ -36,16 +36,23 @@ namespace Win_1337_Patch
 
             try
             {
-                BinaryReader bReader = new BinaryReader(new FileStream(sFilePath, FileMode.Open, FileAccess.Read));
-                fBytes = bReader.ReadBytes((int)bReader.BaseStream.Length);
-                bReader.Close();
+                using (BinaryReader bReader = new BinaryReader(new FileStream(sFilePath, FileMode.Open, FileAccess.Read)))
+                {
+                    fBytes = bReader.ReadBytes((int)bReader.BaseStream.Length);
+                }
             }
-            catch { }
+            catch
+            {
+                return false;
+            }
 
             if (fBytes.Length <= 0) { return false; }
 
             GCHandle gHandle = GCHandle.Alloc(fBytes, GCHandleType.Pinned);
-            iPointer = gHandle.AddrOfPinnedObject().ToInt32();
+            checked
+            {
+                iPointer = gHandle.AddrOfPinnedObject().ToInt64(); 
+            }
             DHD = (IMAGE_DOS_HEADER)Marshal.PtrToStructure(new IntPtr(iPointer), typeof(IMAGE_DOS_HEADER));
             NHD = (IMAGE_NT_HEADERS)Marshal.PtrToStructure(new IntPtr(iPointer + DHD.e_lfanew), typeof(IMAGE_NT_HEADERS));
             gHandle.Free();
@@ -74,17 +81,23 @@ namespace Win_1337_Patch
             NHD.OptionalHeader.CheckSum = uRecalculated;
 
             byte[] bNHD = getBytes_(NHD);
-            if (fBytes.Length - (DHD.e_lfanew + bNHD.Length) <= 0) { Array.Resize(ref fBytes, (int)(fBytes.Length + bNHD.Length)); }
+            if (fBytes.Length - (DHD.e_lfanew + bNHD.Length) <= 0)
+            {
+                Array.Resize(ref fBytes, (int)(fBytes.Length + bNHD.Length));
+            }
             Array.Copy(bNHD, 0, fBytes, DHD.e_lfanew, bNHD.Length);
 
             try
             {
-                BinaryWriter bWriter = new BinaryWriter(new FileStream(sFilePath, FileMode.Open));
-                bWriter.Write(fBytes);
-                bWriter.Flush();
-                bWriter.Close();
+                using (BinaryWriter bWriter = new BinaryWriter(new FileStream(sFilePath, FileMode.Open)))
+                {
+                    bWriter.Write(fBytes);
+                }
             }
-            catch { return false; }
+            catch
+            {
+                return false;
+            }
 
             return true;
         }
