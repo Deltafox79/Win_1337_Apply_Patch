@@ -70,5 +70,17 @@ namespace Win_1337_Patch.Properties {
                 this["backup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool changeOwnership {
+            get {
+                return ((bool)(this["changeOwnership"]));
+            }
+            set {
+                this["changeOwnership"] = value;
+            }
+        }
     }
 }
